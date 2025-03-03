@@ -1,0 +1,2419 @@
+
+<script type="text/html" data-template-name="bedrock-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-region"><i class="fa fa-globe"></i> Region</label>
+        <input type="text" id="node-config-input-region" placeholder="us-east-1">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-accessKey"><i class="fa fa-key"></i> Access Key</label>
+        <input type="text" id="node-config-input-accessKey">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-secretKey"><i class="fa fa-lock"></i> Secret Key</label>
+        <input type="password" id="node-config-input-secretKey">
+    </div>
+</script>
+
+
+<script type="text/html" data-template-name="bedrock-applyguardrail">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-applyguardrail">
+    <p>Executes the ApplyGuardrail operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the ApplyGuardrail operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-converse">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-converse">
+    <p>Executes the Converse operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the Converse operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-conversestream">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-conversestream">
+    <p>Executes the ConverseStream operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the ConverseStream operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-getasyncinvoke">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-getasyncinvoke">
+    <p>Executes the GetAsyncInvoke operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the GetAsyncInvoke operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-invokemodel">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-invokemodel">
+    <p>Executes the InvokeModel operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the InvokeModel operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-invokemodelwithresponsestream">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-invokemodelwithresponsestream">
+    <p>Executes the InvokeModelWithResponseStream operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the InvokeModelWithResponseStream operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-listasyncinvokes">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-listasyncinvokes">
+    <p>Executes the ListAsyncInvokes operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the ListAsyncInvokes operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-startasyncinvoke">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-modelId-default"><i class="fa fa-code"></i> Default Model ID</label>
+        <input type="text" id="node-input-modelId-default" placeholder="anthropic.claude-v2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxTokens-default"><i class="fa fa-text-width"></i> Default Max Tokens</label>
+        <input type="number" id="node-input-maxTokens-default" placeholder="2048">
+    </div>
+    <div class="form-row">
+        <label for="node-input-temperature-default"><i class="fa fa-thermometer-half"></i> Default Temperature</label>
+        <input type="number" id="node-input-temperature-default" placeholder="0.7" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topP-default"><i class="fa fa-random"></i> Default Top P</label>
+        <input type="number" id="node-input-topP-default" placeholder="1" min="0" max="1" step="0.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopSequences-default"><i class="fa fa-stop"></i> Default Stop Sequences</label>
+        <input type="text" id="node-input-stopSequences-default" placeholder="Comma-separated sequences">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="bedrock-startasyncinvoke">
+    <p>Executes the StartAsyncInvoke operation on Amazon Bedrock.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>messages <span class="property-type">array</span></dt>
+        <dd>Required. Array of message objects. Can be provided directly in msg.messages or in msg.payload.messages. Example:
+            <pre>[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "Tell me a joke"
+            }
+        ]
+    }
+]</pre>
+        </dd>
+        
+        <dt class="optional">modelId <span class="property-type">string</span></dt>
+        <dd>Optional. Overrides the default Model ID configured in the node.</dd>
+        
+        <dt class="optional">maxTokens <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default maximum tokens.</dd>
+        
+        <dt class="optional">temperature <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default temperature.</dd>
+        
+        <dt class="optional">topP <span class="property-type">number</span></dt>
+        <dd>Optional. Overrides the default top P value.</dd>
+        
+        <dt class="optional">stopSequences <span class="property-type">array</span></dt>
+        <dd>Optional. Overrides the default stop sequences.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the StartAsyncInvoke operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-createinvocation">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-createinvocation">
+    <p>Executes the CreateInvocation operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the CreateInvocation operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the CreateInvocation operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-createsession">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-createsession">
+    <p>Executes the CreateSession operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the CreateSession operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the CreateSession operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-deleteagentmemory">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-deleteagentmemory">
+    <p>Executes the DeleteAgentMemory operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the DeleteAgentMemory operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the DeleteAgentMemory operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-deletesession">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-deletesession">
+    <p>Executes the DeleteSession operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the DeleteSession operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the DeleteSession operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-endsession">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-endsession">
+    <p>Executes the EndSession operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the EndSession operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the EndSession operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-generatequery">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-generatequery">
+    <p>Executes the GenerateQuery operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the GenerateQuery operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the GenerateQuery operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-getagentmemory">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-getagentmemory">
+    <p>Executes the GetAgentMemory operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the GetAgentMemory operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the GetAgentMemory operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-getinvocationstep">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-getinvocationstep">
+    <p>Executes the GetInvocationStep operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the GetInvocationStep operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the GetInvocationStep operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-getsession">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-getsession">
+    <p>Executes the GetSession operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the GetSession operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the GetSession operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-invokeagent">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-invokeagent">
+    <p>Executes the InvokeAgent operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the InvokeAgent operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the InvokeAgent operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-invokeflow">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-invokeflow">
+    <p>Executes the InvokeFlow operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the InvokeFlow operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the InvokeFlow operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-invokeinlineagent">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-invokeinlineagent">
+    <p>Executes the InvokeInlineAgent operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the InvokeInlineAgent operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the InvokeInlineAgent operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-listinvocationsteps">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-listinvocationsteps">
+    <p>Executes the ListInvocationSteps operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the ListInvocationSteps operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the ListInvocationSteps operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-listinvocations">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-listinvocations">
+    <p>Executes the ListInvocations operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the ListInvocations operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the ListInvocations operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-listsessions">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-listsessions">
+    <p>Executes the ListSessions operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the ListSessions operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the ListSessions operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-listtagsforresource">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-listtagsforresource">
+    <p>Executes the ListTagsForResource operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the ListTagsForResource operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the ListTagsForResource operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-optimizeprompt">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-optimizeprompt">
+    <p>Executes the OptimizePrompt operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the OptimizePrompt operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the OptimizePrompt operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-putinvocationstep">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-putinvocationstep">
+    <p>Executes the PutInvocationStep operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the PutInvocationStep operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the PutInvocationStep operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-rerank">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-rerank">
+    <p>Executes the Rerank operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the Rerank operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the Rerank operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-retrieveandgenerate">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-retrieveandgenerate">
+    <p>Executes the RetrieveAndGenerate operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the RetrieveAndGenerate operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the RetrieveAndGenerate operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-retrieveandgeneratestream">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-retrieveandgeneratestream">
+    <p>Executes the RetrieveAndGenerateStream operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the RetrieveAndGenerateStream operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the RetrieveAndGenerateStream operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-retrieve">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-retrieve">
+    <p>Executes the Retrieve operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the Retrieve operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the Retrieve operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-tagresource">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-tagresource">
+    <p>Executes the TagResource operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the TagResource operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the TagResource operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-untagresource">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-untagresource">
+    <p>Executes the UntagResource operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the UntagResource operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the UntagResource operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" data-template-name="bedrock-updatesession">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-awsConfig"><i class="fa fa-user"></i> AWS Config</label>
+        <input type="text" id="node-input-awsConfig">
+    </div>
+    
+</script>
+
+<script type="text/html" data-help-name="bedrock-updatesession">
+    <p>Executes the UpdateSession operation on Amazon Bedrock Agent.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Required. The parameters for the UpdateSession operation.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Success Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>The response from the UpdateSession operation</dd>
+            </dl>
+        </li>
+        <li>Error Output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>Error details if the operation fails</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('bedrock-config',{
+        category: 'config',
+        defaults: {
+            name: { value: "" },
+            region: { value: "us-east-1", required: true }
+        },
+        credentials: {
+            accessKey: { type: "text" },
+            secretKey: { type: "password" }
+        },
+        label: function() {
+            return this.name || "Bedrock Config";
+        }
+    });
+
+    
+    RED.nodes.registerType('bedrock-applyguardrail',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock ApplyGuardrail";
+        },
+        paletteLabel: "Bedrock ApplyGuardrail"
+    });
+
+    RED.nodes.registerType('bedrock-converse',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock Converse";
+        },
+        paletteLabel: "Bedrock Converse"
+    });
+
+    RED.nodes.registerType('bedrock-conversestream',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock ConverseStream";
+        },
+        paletteLabel: "Bedrock ConverseStream"
+    });
+
+    RED.nodes.registerType('bedrock-getasyncinvoke',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock GetAsyncInvoke";
+        },
+        paletteLabel: "Bedrock GetAsyncInvoke"
+    });
+
+    RED.nodes.registerType('bedrock-invokemodel',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock InvokeModel";
+        },
+        paletteLabel: "Bedrock InvokeModel"
+    });
+
+    RED.nodes.registerType('bedrock-invokemodelwithresponsestream',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock InvokeModelWithResponseStream";
+        },
+        paletteLabel: "Bedrock InvokeModelWithResponseStream"
+    });
+
+    RED.nodes.registerType('bedrock-listasyncinvokes',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock ListAsyncInvokes";
+        },
+        paletteLabel: "Bedrock ListAsyncInvokes"
+    });
+
+    RED.nodes.registerType('bedrock-startasyncinvoke',{
+        category: 'Amazon Bedrock',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock StartAsyncInvoke";
+        },
+        paletteLabel: "Bedrock StartAsyncInvoke"
+    });
+
+    RED.nodes.registerType('bedrock-createinvocation',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock CreateInvocation";
+        },
+        paletteLabel: "Bedrock CreateInvocation"
+    });
+
+    RED.nodes.registerType('bedrock-createsession',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock CreateSession";
+        },
+        paletteLabel: "Bedrock CreateSession"
+    });
+
+    RED.nodes.registerType('bedrock-deleteagentmemory',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock DeleteAgentMemory";
+        },
+        paletteLabel: "Bedrock DeleteAgentMemory"
+    });
+
+    RED.nodes.registerType('bedrock-deletesession',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock DeleteSession";
+        },
+        paletteLabel: "Bedrock DeleteSession"
+    });
+
+    RED.nodes.registerType('bedrock-endsession',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock EndSession";
+        },
+        paletteLabel: "Bedrock EndSession"
+    });
+
+    RED.nodes.registerType('bedrock-generatequery',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock GenerateQuery";
+        },
+        paletteLabel: "Bedrock GenerateQuery"
+    });
+
+    RED.nodes.registerType('bedrock-getagentmemory',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock GetAgentMemory";
+        },
+        paletteLabel: "Bedrock GetAgentMemory"
+    });
+
+    RED.nodes.registerType('bedrock-getinvocationstep',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock GetInvocationStep";
+        },
+        paletteLabel: "Bedrock GetInvocationStep"
+    });
+
+    RED.nodes.registerType('bedrock-getsession',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock GetSession";
+        },
+        paletteLabel: "Bedrock GetSession"
+    });
+
+    RED.nodes.registerType('bedrock-invokeagent',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock InvokeAgent";
+        },
+        paletteLabel: "Bedrock InvokeAgent"
+    });
+
+    RED.nodes.registerType('bedrock-invokeflow',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock InvokeFlow";
+        },
+        paletteLabel: "Bedrock InvokeFlow"
+    });
+
+    RED.nodes.registerType('bedrock-invokeinlineagent',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock InvokeInlineAgent";
+        },
+        paletteLabel: "Bedrock InvokeInlineAgent"
+    });
+
+    RED.nodes.registerType('bedrock-listinvocationsteps',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock ListInvocationSteps";
+        },
+        paletteLabel: "Bedrock ListInvocationSteps"
+    });
+
+    RED.nodes.registerType('bedrock-listinvocations',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock ListInvocations";
+        },
+        paletteLabel: "Bedrock ListInvocations"
+    });
+
+    RED.nodes.registerType('bedrock-listsessions',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock ListSessions";
+        },
+        paletteLabel: "Bedrock ListSessions"
+    });
+
+    RED.nodes.registerType('bedrock-listtagsforresource',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock ListTagsForResource";
+        },
+        paletteLabel: "Bedrock ListTagsForResource"
+    });
+
+    RED.nodes.registerType('bedrock-optimizeprompt',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock OptimizePrompt";
+        },
+        paletteLabel: "Bedrock OptimizePrompt"
+    });
+
+    RED.nodes.registerType('bedrock-putinvocationstep',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock PutInvocationStep";
+        },
+        paletteLabel: "Bedrock PutInvocationStep"
+    });
+
+    RED.nodes.registerType('bedrock-rerank',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock Rerank";
+        },
+        paletteLabel: "Bedrock Rerank"
+    });
+
+    RED.nodes.registerType('bedrock-retrieveandgenerate',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock RetrieveAndGenerate";
+        },
+        paletteLabel: "Bedrock RetrieveAndGenerate"
+    });
+
+    RED.nodes.registerType('bedrock-retrieveandgeneratestream',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock RetrieveAndGenerateStream";
+        },
+        paletteLabel: "Bedrock RetrieveAndGenerateStream"
+    });
+
+    RED.nodes.registerType('bedrock-retrieve',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock Retrieve";
+        },
+        paletteLabel: "Bedrock Retrieve"
+    });
+
+    RED.nodes.registerType('bedrock-tagresource',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock TagResource";
+        },
+        paletteLabel: "Bedrock TagResource"
+    });
+
+    RED.nodes.registerType('bedrock-untagresource',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock UntagResource";
+        },
+        paletteLabel: "Bedrock UntagResource"
+    });
+
+    RED.nodes.registerType('bedrock-updatesession',{
+        category: 'Amazon Bedrock Agent',
+        color: '#FF9900',
+        defaults: {
+            name: { value: "" },
+            awsConfig: { type: "bedrock-config", required: true },
+            'modelId-default': { value: "anthropic.claude-v2" },
+            'maxTokens-default': { value: 2048 },
+            'temperature-default': { value: 0.7 },
+            'topP-default': { value: 1 },
+            'stopSequences-default': { value: "" }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ["success", "error"],
+        icon: "aws.png",
+        label: function() {
+            return this.name || "Bedrock UpdateSession";
+        },
+        paletteLabel: "Bedrock UpdateSession"
+    });
+</script>
