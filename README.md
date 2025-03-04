@@ -19,10 +19,15 @@ cd ~/node-red
 npm install node-red-contrib-aws-bedrock
 ```
 
+# Modifications
+
+This plugin is automatically generated using the `generatePlugin.js` script in the root of this repository. Direct modification of the `aws-bedrock.js` and `aws-bedrock.html` files will be overwritten by the next run of that script.
+
 
 # ⚠️ WARNING ⚠️
 
 This module is currently untested and considered experimental. Use at your own risk in production environments.
+
 
 
 
